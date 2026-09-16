@@ -1,4 +1,3 @@
-
 def is_course_unlocked(user, course):
     """
     Kursning prerequisite_course'i borligini va u tugallanganligini tekshiradi.

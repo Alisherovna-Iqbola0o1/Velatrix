@@ -6,4 +6,3 @@ class LeaderboardEntrySerializer(serializers.Serializer):
     username = serializers.CharField()
     avatar = serializers.ImageField(allow_null=True)
     course_xp = serializers.IntegerField()
-    

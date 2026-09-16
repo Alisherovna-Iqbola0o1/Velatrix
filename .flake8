@@ -1,0 +1,12 @@
+# Shunda << flake8 . >> faqat loyihangning kerakli kodlariga ishlaydi.
+
+[flake8]
+exclude =
+    .git,
+    __pycache__,
+    venv,
+    migrations,
+    static,
+    media,
+    .venv
+max-line-length = 88

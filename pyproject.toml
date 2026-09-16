@@ -1,0 +1,12 @@
+# Shunda << black . >> faqat loyihangning kerakli kodlariga ishlaydi.
+
+[tool.isort]
+profile = "black"
+line_length = 88
+skip_glob = [
+    "venv/*",
+    ".venv/*",
+    "*/migrations/*",
+    "static/*",
+    "media/*",
+]

@@ -22,10 +22,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = config("DEBUG", default=False, cast=bool)
 
 ALLOWED_HOSTS = []
 
@@ -40,12 +40,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
     # libraries:
     "rest_framework",
     "drf_spectacular",
     "parler",
-
     # apps:
     "users",
     "courses",
@@ -92,11 +90,11 @@ WSGI_APPLICATION = "config.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": config('DB_NAME'),
-        "USER": config('DB_USER'),
-        "PASSWORD": config('DB_PASSWORD'),
-        "HOST": config('DB_HOST'),
-        "PORT": config('DB_PORT'),
+        "NAME": config("DB_NAME"),
+        "USER": config("DB_USER"),
+        "PASSWORD": config("DB_PASSWORD"),
+        "HOST": config("DB_HOST"),
+        "PORT": config("DB_PORT"),
     }
 }
 
@@ -104,9 +102,13 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
+
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+        "NAME": (
+            "django.contrib.auth.password_validation."
+            "UserAttributeSimilarityValidator"
+        ),
     },
     {
         "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
@@ -121,21 +123,20 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
-    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 
 
 # Swagger uchun konfiguratsiya
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'Velatrix API',
-    'DESCRIPTION': 'API documentation for Velatrix',
-    'VERSION': '1.0.0',
-    'SERVE_INCLUDE_SCHEMA': False,
+    "TITLE": "Velatrix API",
+    "DESCRIPTION": "API documentation for Velatrix",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
 }
-
 
 
 LANGUAGE_CODE = "en-us"
@@ -161,13 +162,13 @@ AUTH_USER_MODEL = "users.User"
 # django-parler settings (multi-language content translation)
 PARLER_LANGUAGES = {
     SITE_ID: (
-        {'code': 'uz'},
-        {'code': 'en'},
+        {"code": "uz"},
+        {"code": "en"},
     ),
-    'default': {
-        'fallbacks': ['uz'],
-        'hide_untranslated': False,
-    }
+    "default": {
+        "fallbacks": ["uz"],
+        "hide_untranslated": False,
+    },
 }
 
 # Default primary key field type
