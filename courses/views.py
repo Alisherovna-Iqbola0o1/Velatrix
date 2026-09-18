@@ -1,8 +1,8 @@
 from rest_framework import generics
 
-from .models import Course, Section
+from .models import Course, Section, Question
 from .permissions import IsAdminOrReadOnly
-from .serializers import CourseSerializer, SectionSerializer
+from .serializers import CourseSerializer, SectionSerializer, QuestionSerializer
 
 
 class CourseListView(generics.ListAPIView):
@@ -26,3 +26,14 @@ class SectionListView(generics.ListAPIView):
         return Section.objects.filter(
             course_id=self.kwargs["course_id"], is_published=True
         ).order_by("order")
+
+
+class LessonQuestionsView(generics.ListAPIView):
+    serializer_class = QuestionSerializer
+    permission_classes = [IsAdminOrReadOnly]
+
+    def get_queryset(self):
+        return Question.objects.filter(
+            lesson_id=self.kwargs["lesson_id"]
+        ).order_by("order")
+        
