@@ -80,7 +80,9 @@ ROOT_URLCONF = "config.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [
+            BASE_DIR.parent / "velatrix-frontend" / "dist",
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -160,6 +162,12 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
+
+# React (Vite) build papkasini Django static fayllariga qo'shish
+# BASE_DIR bu 'velatrix-backend', shuning uchun bir qadam tepaga chiqib 'velatrix-frontend/dist' ga kiramiz:
+STATICFILES_DIRS = [
+    BASE_DIR.parent / "velatrix-frontend" / "dist",
+]
 
 # Media files (user-uploaded content, e.g. avatars)
 MEDIA_URL = "media/"
