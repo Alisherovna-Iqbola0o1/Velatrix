@@ -31,23 +31,19 @@ from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 urlpatterns = [
     # Admin
     path("admin/", admin.site.urls),
-
     # JWT Auth Endpoints
     path("api/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
     path("api/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
-
     # Swagger / Documentation
     path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
     path(
         "swagger/", SpectacularSwaggerView.as_view(url_name="schema"), name="swagger-ui"
     ),
-
     # Apps
     path("api/users/", include("users.urls")),
     path("api/courses/", include("courses.urls")),
     path("api/progress/", include("progress.urls")),
     path("api/leaderboard/", include("leaderboard.urls")),
-
     # Frontend SPA (React) uchun catch-all yo'l:
     re_path(r"^.*$", TemplateView.as_view(template_name="index.html")),
 ]

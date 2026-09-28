@@ -33,6 +33,6 @@ class LessonQuestionsView(generics.ListAPIView):
     permission_classes = [IsAdminOrReadOnly]
 
     def get_queryset(self):
-        return Question.objects.filter(
-            lesson_id=self.kwargs["lesson_id"]
-        ).order_by("order")
+        return Question.objects.filter(lesson_id=self.kwargs["lesson_id"]).order_by(
+            "order"
+        )

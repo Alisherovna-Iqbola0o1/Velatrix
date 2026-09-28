@@ -22,15 +22,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY', default='django-insecure-default-key')
-DEBUG = config('DEBUG', default=False, cast=bool)
+SECRET_KEY = config("SECRET_KEY", default="django-insecure-default-key")
+DEBUG = config("DEBUG", default=False, cast=bool)
 
 
 def _csv(value):
-    return [item.strip() for item in value.split(',') if item.strip()]
+    return [item.strip() for item in value.split(",") if item.strip()]
 
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1,localhost', cast=_csv)
+ALLOWED_HOSTS = config("ALLOWED_HOSTS", default="127.0.0.1,localhost", cast=_csv)
 
 # Application definition
 
@@ -42,13 +42,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
     # libraries:
     "rest_framework",
     "drf_spectacular",
     "parler",
     "corsheaders",
-
     # apps:
     "users",
     "courses",
@@ -70,12 +68,12 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = config(
-    'CORS_ALLOWED_ORIGINS',
-    default='http://localhost:5173,http://127.0.0.1:5173',
+    "CORS_ALLOWED_ORIGINS",
+    default="http://localhost:5173,http://127.0.0.1:5173",
     cast=_csv,
 )
 
-CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS', default='', cast=_csv)
+CSRF_TRUSTED_ORIGINS = config("CSRF_TRUSTED_ORIGINS", default="", cast=_csv)
 
 ROOT_URLCONF = "config.urls"
 
@@ -104,9 +102,9 @@ WSGI_APPLICATION = "config.wsgi.application"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
 
@@ -164,13 +162,6 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
-
-# React (Vite) build papkasini Django static fayllariga qo'shish
-# BASE_DIR bu 'velatrix-backend', shuning uchun bir qadam
-# tepaga chiqib 'velatrix-frontend/dist' ga kiramiz:
-STATICFILES_DIRS = [
-    BASE_DIR.parent / "velatrix-frontend" / "dist",
-]
 
 # Media files (user-uploaded content, e.g. avatars)
 MEDIA_URL = "media/"
