@@ -16,7 +16,8 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import include, path, re_path
+from django.views.generic import TemplateView
 
 # SimpleJWT views
 from rest_framework_simplejwt.views import (
@@ -46,4 +47,7 @@ urlpatterns = [
     path("api/courses/", include("courses.urls")),
     path("api/progress/", include("progress.urls")),
     path("api/leaderboard/", include("leaderboard.urls")),
-] 
+
+    # Frontend SPA (React) uchun catch-all yo'l:
+    re_path(r"^.*$", TemplateView.as_view(template_name="index.html")),
+]
