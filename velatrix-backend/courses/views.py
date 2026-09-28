@@ -36,4 +36,3 @@ class LessonQuestionsView(generics.ListAPIView):
         return Question.objects.filter(
             lesson_id=self.kwargs["lesson_id"]
         ).order_by("order")
-        

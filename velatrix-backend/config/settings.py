@@ -25,8 +25,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY', default='django-insecure-default-key')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
+
 def _csv(value):
     return [item.strip() for item in value.split(',') if item.strip()]
+
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1,localhost', cast=_csv)
 
@@ -164,7 +166,8 @@ STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # React (Vite) build papkasini Django static fayllariga qo'shish
-# BASE_DIR bu 'velatrix-backend', shuning uchun bir qadam tepaga chiqib 'velatrix-frontend/dist' ga kiramiz:
+# BASE_DIR bu 'velatrix-backend', shuning uchun bir qadam
+# tepaga chiqib 'velatrix-frontend/dist' ga kiramiz:
 STATICFILES_DIRS = [
     BASE_DIR.parent / "velatrix-frontend" / "dist",
 ]
